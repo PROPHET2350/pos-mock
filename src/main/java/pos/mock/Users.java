@@ -1,7 +1,9 @@
 package pos.mock;
 
 import com.fasterxml.jackson.annotation.JsonRawValue;
+import com.vladmihalcea.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Type;
 
 @Entity
 public class Users {
@@ -18,9 +20,8 @@ public class Users {
 
     public boolean isCashDrawerOpen;
 
+    @Type(JsonType.class)
     @Column(columnDefinition = "json")
-    @JsonRawValue
-    @Transient
     public Company company;
 
     protected Users() {

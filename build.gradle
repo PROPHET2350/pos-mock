@@ -23,6 +23,7 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'com.vladmihalcea:hibernate-types-60:2.21.0'
 }
 
 tasks.named('test') {

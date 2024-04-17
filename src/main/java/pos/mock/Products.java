@@ -11,7 +11,6 @@ public class Products {
 
     public String name;
 
-
     public float price;
 
     public int stock;
@@ -20,15 +19,18 @@ public class Products {
 
     public String img;
 
+    public String code;
+
     protected Products() {
     }
 
-    public Products(Long id, String name, float price, int stock, int category, String img) {
+    public Products(Long id, String name, float price, int stock, int category, String img, String code) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.stock = stock;
         this.category = category;
         this.img = img;
+        this.code = code;
     }
 }
