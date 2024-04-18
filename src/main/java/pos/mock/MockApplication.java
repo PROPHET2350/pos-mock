@@ -17,7 +17,8 @@ public class MockApplication {
     CommandLineRunner init(
             ProductsRepository productsRepository,
             UsersRepository usersRepository,
-            CategoryRepository categoryRepository
+            CategoryRepository categoryRepository,
+            ClientRepository clientRepository
     ) {
         Faker faker = new Faker();
         productsRepository.deleteAll();
@@ -32,9 +33,10 @@ public class MockApplication {
                 Products p = new Products(i + 1L, name, price, stock, category, img, code);
                 productsRepository.save(p);
             }
-            Users u1 = new Users(1, faker.name().fullName(), "user1", "user1", true, true, new Company("BBF","1756453498001",true));
-            Users u2 = new Users(2, faker.name().fullName(), "user2", "user2", false, true, new Company("BBF","1756453498001",true));
-            Users u3 = new Users(3, faker.name().fullName(), "user3", "user3", true, false, new Company("BBF","1756453498001",true));
+            Company c = new Company("BBF","1756453498001",faker.phoneNumber().phoneNumber(),faker.internet().emailAddress(),faker.address().city(),true);
+            Users u1 = new Users(1, faker.name().fullName(), "user1", "user1", true, true, c);
+            Users u2 = new Users(2, faker.name().fullName(), "user2", "user2", false, true, c);
+            Users u3 = new Users(3, faker.name().fullName(), "user3", "user3", true, false, c);
             usersRepository.save(u1);
             usersRepository.save(u2);
             usersRepository.save(u3);
@@ -44,6 +46,8 @@ public class MockApplication {
             categoryRepository.save(c1);
             categoryRepository.save(c2);
             categoryRepository.save(c3);
+            Client client = new Client(1L,"1757568637",faker.name().fullName(), faker.phoneNumber().phoneNumber(),faker.internet().emailAddress(),faker.address().city());
+            clientRepository.save(client);
         };
     }
 
